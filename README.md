@@ -38,21 +38,30 @@ The goal of the DBScan unsupervised learning portion was to generate playlists c
 
 After standardizing the musical feature data subset, we performed PCA to better understand the underlying data's core composition. It turned out that the explained variance was reasonably well distributed amongst the various musical features with 99% variance explanation requiring 8 of 9 principal components and only ~40% explained by the first component. We capped the number of components at 9 since there were only 9 musical features under consideration. 
 
-![Explained Variance](dbscan_images/musical_feature_pca_explained_variance.png)
+<p align="center"> 
+<img src="dbscan_images/musical_feature_pca_explained_variance.png">
+</p>
 
 Interestingly, the primary component was best described by loudness and energy, which a random sampling of adults above the age of 45 has subsequently confirmed via their ground truth labels.
 
-![Feature Weights](dbscan_images/pca_feature_weights.png)
+<p align="center"> 
+<img src="dbscan_images/pca_feature_weights.png">
+</p>
 
 In order to perform the DBSCAN clustering, we needed to determine relevant values for the  𝑚𝑖𝑛𝑝𝑡𝑠  and  𝜖  variables. We used the  𝑚𝑖𝑛𝑝𝑡𝑠≤𝐷+1  rule of thumb to set  𝑚𝑖𝑛𝑝𝑡𝑠  equal to 10 given that our cleaned dataset consisted of 9 features. We then subjected a random sampling of the dataset to the tried and true "elbow test" by plotting the sorted 10th nearest neighbor distances. Based on the elbow test, we elected to use an  𝜖  value of 0.75 to ensure both a sufficient number of clusters as well as a relatively evenly disbursed track count per cluster.
 
+<p align="center"> 
+<img src="dbscan_images/knn_distance.png">
+</p>
 ![KNN Distance](dbscan_images/knn_distance.png)
 
 The resultant clustering consisted of 19 playlists, excluding tracks labeled as noise, comprised of ~90% of the total dataset. The average cluster size consisted of ~7,300 tracks, with each cluster representing ~5% of the total dataset.
 
 Without further adieu, below please find a sample of tracks from some of our DBSCAN generated playlists. Interestingly, despite leaving out the genre and artist name from the cleaned dataset, the DBSCAN clustering grouped together tracks from similar genres and artists based solely on their musical features.
 
-![Playlists](dbscan_images/playlists.PNG)
+<p align="center"> 
+<img src="dbscan_images/playlists.PNG">
+</p>
 
 ### Supervised
 
@@ -62,7 +71,9 @@ matrix is shown below. Energy and loudness are highly correlated as one might ex
 of the features are distinct from each other and will all be useful in the final regression 
 models to predict popularity.
 
-![Correlation Matrix](images/correlation_matrix.PNG)
+<p align="center"> 
+<img src="images/correlation_matrix.PNG">
+</p>
 
 Four different regression models were constructed using scikit-learn. These models were 
 standard linear regression, k-nearest neighbors, random forest and decision trees. All models
@@ -71,9 +82,13 @@ at, R squared value and root mean square error. These scores for each model are 
 Hyperparameter tuning was performed on all of the models to get the best possible scores for each. 
 Random forest ended up performing significantly better than all of the other models. 
 
-![R2](images/r2_bar_plot.png)
+<p align="center"> 
+<img src="images/r2_bar_plot.png">
+</p>
 
-![MSE](images/rmse_bar_plot.png)
+<p align="center"> 
+<img src="images/rmse_bar_plot.png">
+</p>
 
 The next step was to look at all of the features that went into the models are see which feature
 ended up being the most useful for the model. This was done by looking at scikit-learn's feature
@@ -82,7 +97,9 @@ model. Many of the other features were relatively similar in importance to each 
 played a significant role in producing the model. The graph below shows the top 10 features. The 
 two features that played almost no role in the model were key and time_signature. 
 
-![Feature Importances](images/feature_importances_random_forest.png)
+<p align="center"> 
+<img src="images/feature_importances_random_forest.png">
+</p>
 
 
 ### References
