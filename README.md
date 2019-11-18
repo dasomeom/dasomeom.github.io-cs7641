@@ -52,93 +52,25 @@ In order to get another view at what features may end up being the best predicto
 
 The goal of the DBSCAN unsupervised learning portion was to generate playlists comprised of tracks with similar musical features. To this end, we separated the dataset into the core numerical musical features taking care to filter out identifying labels and classifications such as the track name, artist, and genre. We also removed effectively duplicate tracks based on artist and track name, which reduced the dataset size from ~280,000 to ~150,000 tracks. The resultant list of musical features consisted of acousticness, danceability, energy, instrumentalness, liveness, loudness, speechiness, tempo, and valence.
 
-In order to perform the DBSCAN clustering, we needed to determine relevant values for the  𝑚𝑖𝑛𝑝𝑡𝑠  and  𝜖  variables. We used the  𝑚𝑖𝑛𝑝𝑡𝑠≤𝐷+1  rule of thumb to set  𝑚𝑖𝑛𝑝𝑡𝑠  equal to 10 given that our cleaned dataset consisted of 9 features. We then subjected a random sampling of the dataset to the tried and true "elbow test" by plotting the sorted 10th nearest neighbor distances. Based on the elbow test, we elected to use an  𝜖  value of 0.75 to ensure both a sufficient number of clusters as well as a relatively evenly disbursed track count per cluster.
+In order to perform the DBSCAN clustering, we needed to determine relevant values for the  𝑚𝑖𝑛𝑝𝑡𝑠  and  𝜖  variables. We used the  𝑚𝑖𝑛𝑝𝑡𝑠≤𝐷+1  rule of thumb to set  𝑚𝑖𝑛𝑝𝑡𝑠  equal to 20 given that our cleaned dataset consisted of 9 features and we wanted to generate playlists with a sufficient number of tracks. We then leveraging the tried and true "elbow test" by plotting the sorted 10th nearest neighbor distances. Based on the elbow test, we elected to use an  𝜖  value of 0.65 to ensure both a sufficient number of clusters as well as a relatively evenly disbursed track count per cluster.
 
 <p align="center"> 
 <img src="dbscan_images/knn_distance.png">
 </p>
 
-The resultant clustering consisted of 19 playlists, excluding tracks labeled as noise, comprised of ~90% of the total dataset. The average cluster size consisted of ~7,300 tracks, with each cluster representing ~5% of the total dataset.
+The resultant clustering consisted of 14 playlists, excluding tracks labeled as noise, comprised of ~74% of the total dataset. The average cluster size consisted of ~8,735 tracks, but this was heavily dominated by a few outsized playlists. We further whittled down the resultant clustering to only those consisting of between 10 and 100 tracks, which generated our final 10 playlists.
 
-Without further adieu, below please find a sample of tracks from some of our DBSCAN generated playlists. Interestingly, despite leaving out the genre and artist name from the cleaned dataset, the DBSCAN clustering grouped together tracks from similar genres and artists based solely on their musical features.
+Although our final playlists represented a fraction of the original dataset, the quality was relatively robust as evidenced by the proportion of the most prevalent genre in each playlist.
+
+<p align="center"> 
+<img src="dbscan_images/genre_distribution.png">
+</p>
+
+Without further adieu, below please find a sample of tracks from some of our DBSCAN generated playlists. Interestingly, despite leaving out the genre and artist name from the cleaned dataset, the DBSCAN clustering grouped together tracks from similar genres and artists based solely on their musical features. With additional musical features and/or the addition of millions of user "likes", we undoubtedly would have a larger, deeper set of available playlists.
 
 <p align="center"> 
 <img src="dbscan_images/playlists.PNG">
 </p>
-
-We have also attempted to solve this problem with kmeans. For the kmeans unsupervised learning, we have run the algorithm with 10 k, 100 k, 1000 k with the normalized dataset with musical attributes of acousticness, dancebility, duration_ms, energy, instrumentalness, liveness, loudness, speechiness, tempo, valence. The result is as follows: 
-
-k = 10
-Number of iterations: 52
-Within cluster sum of squared errors: 31040.70140648133
-
-Clustered Instances
-
- 0       40296 ( 18%)
- 1       22871 ( 10%)
- 2        9575 (  4%)
- 3       23246 ( 10%)
- 4       13124 (  6%)
- 5       20551 (  9%)
- 6       35122 ( 15%)
- 7        9887 (  4%)
- 8       29376 ( 13%)
- 9       24111 ( 11%)
-
-k = 100
-number of iterations: 137
-Within cluster sum of squared errors: 14277.443071772985
-
-Clustered Instances
-
-  0        3619 (  2%)
-  1        1434 (  1%)
-  2        3580 (  2%)
-  3        1931 (  1%)
-  4        2626 (  1%)
-  5        1876 (  1%)
-  6        3320 (  1%)
-  7        2004 (  1%)
-  8        3080 (  1%)
-  9        2979 (  1%)
- 10        1964 (  1%)
- 11        2581 (  1%)
- 12        2239 (  1%)
- 13        2727 (  1%)
- 14        1107 (  0%)
-....
-
-
-
-Number of iterations: 147
-Within cluster sum of squared errors: 6744.337804311292
-
-  0         317 (  0%)
-  1         118 (  0%)
-  2         403 (  0%)
-  3         395 (  0%)
-  4         121 (  0%)
-  5         490 (  0%)
-  6         205 (  0%)
-  7         160 (  0%)
-  8         265 (  0%)
-  9         281 (  0%)
- 10         207 (  0%)
- 11         381 (  0%)
- 12         120 (  0%)
- 13         461 (  0%)
- 14          61 (  0%)
- 15         130 (  0%)
- 16          91 (  0%)
- 17         210 (  0%)
- 18         123 (  0%)
- 19         526 (  0%)
- 20         394 (  0%)
- 21         409 (  0%)
- 22         143 (  0%)
-...
-
-For each model with different k, we have observed that the number of points in each cluster was evenly distributed. It was hard for us to find the optimal k using the elbow method, so we decided to work with DBSCAN.
 
 ### Supervised
 
