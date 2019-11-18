@@ -69,21 +69,14 @@ Without further adieu, below please find a sample of tracks from some of our DBS
 ### Supervised
 
 The first step was to take a look at all the features and construct a correlation matrix
-to determine if any of the features represented the same meaning as another feature. This
-matrix is shown below. Energy and loudness are highly correlated as one might expect. All 
-of the features are distinct from each other and will all be useful in the final regression 
-models to predict popularity.
+to determine if any of the features represented the same meaning as another feature. This matrix is shown below. Energy and loudness are highly correlated as one might expect. All of the features are distinct from each other and will all be useful in the final regression models to predict popularity.
 
 <p align="center"> 
 <img src="images/correlation_matrix.PNG">
 </p>
 
 Four different regression models were constructed using scikit-learn. These models were 
-standard linear regression, k-nearest neighbors, random forest and decision trees. All models
-were trained and scored using 10-fold cross validation. Two different scoring metrics were looked
-at, R squared value and root mean square error. These scores for each model are shown below. 
-Hyperparameter tuning was performed on all of the models to get the best possible scores for each. 
-Random forest ended up performing significantly better than all of the other models. 
+standard linear regression, k-nearest neighbors, random forest and decision trees. All models were trained and scored using 10-fold cross validation. Two different scoring metrics were looked at, R squared value and root mean square error. These scores for each model are shown below. Hyperparameter tuning was performed on all of the models to get the best possible scores for each. Random forest ended up performing significantly better than all of the other models. 
 
 <p align="center"> 
 <img src="images/r2_bar_plot.png">
@@ -93,31 +86,34 @@ Random forest ended up performing significantly better than all of the other mod
 <img src="images/rmse_bar_plot.png">
 </p>
 
-The next step was to look at all of the features that went into the models are see which feature
-ended up being the most useful for the model. This was done by looking at scikit-learn's feature
-importance variable and it ended up being that acousticness was by far the most useful to the 
-model. Many of the other features were relatively similar in importance to each other and still 
-played a significant role in producing the model. The graph below shows the top 10 features. The 
-two features that played almost no role in the model were key and time_signature. 
+The next step was to look at all of the features that went into the models are see which feature ended up being the most useful for the model. This was done by looking at scikit-learn's feature importance variable and it ended up being that acousticness was by far the most useful to the model. Many of the other features were relatively similar in importance to each other and still played a significant role in producing the model. The graph below shows the top 10 features. The two features that played almost no role in the model were key and time_signature. 
 
 <p align="center"> 
 <img src="images/feature_importances_random_forest.png">
 </p>
 
+### Future Work
+
+The next steps for this project will be to get a larger dataset, and find new song features that would help to improve the predictive performance of our models. The biggest source of new information we foresee is using song audio data and analyzing that with a deep neural network. Similar work has been done using audio data for song genre classification [6]. We can apply the same network and use the features it extracts from the audio data for popularity prediction rather than genre classification. 
+
 
 ### References
 
 [1] Bertin-Mahieux, T., Ellis, D. P., Whitman, B., & Lamere, P. (2011). The million song dataset.
+
 [2] Choi, K., Fazekas, G., Sandler, M., & Cho, K. (2017). Convolutional recurrent neural
 networks for music classification. In IEEE International Conference on Acoustics,
 Speech and Signal Processing (ICASSP) (pp. 2392-2396).
+
 [3] J. Lee and J. Lee, "Music Popularity: Metrics, Characteristics, and Audio-Based Prediction," in IEEE Transactions on Multimedia, vol. 20, no. 11, pp. 3173-3182, Nov. 2018.
-[4] McFee, B., Bertin-Mahieux, T., Ellis, D. P., & Lanckriet, G. R. (2012). The million song 
-dataset challenge. In Proceedings of the 21st International Conference on World Wide 
+
+[4] McFee, B., Bertin-Mahieux, T., Ellis, D. P., & Lanckriet, G. R. (2012). The million song dataset challenge. In Proceedings of the 21st International Conference on World Wide 
 Web (pp. 909-916). ACM.
+
 [5] Ni, Y., Santos-Rodriguez, R., Mcvicar, M., & De Bie, T. (2011). Hit song science 
 once again a science. In 4th International Workshop on Machine Learning and Music.
 
+[6] Yu, Yang et al. Deep attention based music genre classification. Neurocomputing, vol 372, pp. 84-91.  Jan. 2020.
 
 
 Current URL: https://deom119.github.io/deom119.github.io-cs7641/
