@@ -9,7 +9,9 @@ The global music industry was worth over $19 billion in 2018, and there has been
 
 The dataset we decided to use contains 228,159 tracks, and provides numerical data on the musical features of each song. Each track is defined by a tuple of (Artist Name, Track Name, Genre, Track ID) and has 10 musical features associated with it. After removing all identifying features, the dataset looks as follows:
 
+<p align="center">
 ![Data Preview](data_head.png)
+  </p>
 
 We have also provided a brief explanation for each feature:
 
