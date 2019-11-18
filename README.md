@@ -72,6 +72,42 @@ Without further adieu, below please find a sample of tracks from some of our DBS
 <img src="dbscan_images/playlists_v2.PNG">
 </p>
 
+Originally, we have also attempted to solve this problem with kmeans. For the kmeans unsupervised learning, we have run the algorithm with 10 k, 100 k, 1000 k with the normalized dataset with musical attributes of acousticness, dancebility, duration_ms, energy, instrumentalness, liveness, loudness, speechiness, tempo, valence. The result is as follows: 
+
+k = 10
+
+Number of iterations: 52
+
+Within cluster sum of squared errors: 31040.70140648133
+
+<p align="center"> 
+<img src="images/k10.png", width="500">
+</p>
+
+
+k = 100
+
+number of iterations: 137
+
+Within cluster sum of squared errors: 14277.443071772985
+
+<p align="center"> 
+<img src="images/k100.png", width="500">
+</p>
+
+
+k = 1000
+
+Number of iterations: 147
+
+Within cluster sum of squared errors: 6744.337804311292
+
+<p align="center"> 
+<img src="images/k1000.png", width="500">
+</p>
+
+For each model with different k, we have observed that the number of points in each cluster was evenly distributed. It was hard for us to find the optimal k using the elbow method, so we decided to work with dbscan.
+
 ### Supervised
 
 The first step was to take a look at all the features and construct a correlation matrix
