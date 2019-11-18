@@ -81,7 +81,7 @@ Number of iterations: 52
 Within cluster sum of squared errors: 31040.70140648133
 
 <p align="center"> 
-<img src="images/k10.png", width="500">
+<img src="images/k10.png">
 </p>
 
 
@@ -92,7 +92,7 @@ number of iterations: 137
 Within cluster sum of squared errors: 14277.443071772985
 
 <p align="center"> 
-<img src="images/k100.png", width="500">
+<img src="images/k100.png">
 </p>
 
 
@@ -103,7 +103,7 @@ Number of iterations: 147
 Within cluster sum of squared errors: 6744.337804311292
 
 <p align="center"> 
-<img src="images/k1000.png", width="500">
+<img src="images/k1000.png">
 </p>
 
 For each model with different k, we have observed that the number of points in each cluster was evenly distributed. It was hard for us to find the optimal k using the elbow method, so we decided to work with dbscan.
