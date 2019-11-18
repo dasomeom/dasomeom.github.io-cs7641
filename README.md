@@ -5,6 +5,31 @@
 The global music industry was worth over $19 billion in 2018, and there has been recent interest in predicting the popularity of a song based solely on its musical features. Through our research, we found that there have been many similar studies conducted on music and machine learning in recent years. We found studies that trained CRNNs on a combination of the time-series waveform data and musical features data, as well as studies that trained SVM models on features extracted from the songs [2, 3, 5]. In this project, however, we plan to test if a neural network can make accurate predictions using the musical features supplied by the Million Song Dataset [1, 4].
 
 
+### Data Exploration
+
+The dataset we decided to use contains 228,159 tracks, and provides numerical data on the musical features of each song. Each track is defined by a tuple of (Artist Name, Track Name, Genre, Track ID) and has 10 musical features associated with it. After removing all identifying features, the dataset looks as follows:
+
+![Data Preview](data_head.png)
+
+We have also provided a brief explanation for each feature:
+
+
+| Feature          | Explanation                                                                                                                                             |
+|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Popularity       | Based, in the most part, on the total number of plays the track has had and how recent those plays are.                                                 |
+| Acousticness     | A confidence measure from 0.0 to 1.0 of whether the track is acoustic.                                                                                  |
+| Danceability     | How suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity |
+| Duration         | Duration in milliseconds.                                                                                                                               |
+| Energy           | Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity.                                                      |
+| Instrumentalness | Predicts whether a track contains no vocals.                                                                                                            |
+| Liveness         | Detects the presence of an audience in the recording.                                                                                                   |
+| Loudness         | The overall loudness of a track in decibels (dB).                                                                                                       |
+| Speechiness      | Detects the presence of spoken words in a track.                                                                                                        |
+| Tempo            | The overall estimated tempo of a track in beats per minute (BPM).                                                                                       |
+| Valence          | Describes the musical positiveness conveyed by a track.   
+
+
+
 ### Unsupervised
 
 The goal of the DBScan unsupervised learning portion was to generate playlists comprised of tracks with similar musical features. To this end, we separated the dataset into the core numerical musical features taking care to filter out identifying labels and classifications such as the track name, artist, and genre. We also removed effectively duplicate tracks based on artist and track name, which reduced the dataset size from ~280,000 to ~150,000 tracks. The resultant list of musical features consisted of acousticness, danceability, energy, instrumentalness, liveness, loudness, speechiness, tempo, and valence.
