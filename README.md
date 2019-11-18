@@ -2,12 +2,12 @@
 
 ### Problem Definition
 
-The global music industry was worth over $19 billion in 2018, and there has been recent interest in predicting the popularity of a song based solely on its musical features. Through our research, we found that there have been many similar studies conducted on music and machine learning in recent years. We found studies that trained CRNNs on a combination of the time-series waveform data and musical features data, as well as studies that trained SVM models on features extracted from the songs [2, 3, 5]. In this project, however, we plan to test if a neural network can make accurate predictions using the musical features supplied by the Spotify Dataset [1, 4].
+The global music industry was worth over $19 billion in 2018, and there has been recent interest in predicting the popularity of a song based solely on its musical features. Through our research, we found that there have been many similar studies conducted on music and machine learning in recent years. We found studies that trained CRNNs on a combination of the time-series waveform data and musical features data, as well as studies that trained SVM models on features extracted from the songs [2, 3, 5]. In this project, however, we plan to test if machine learning models can make accurate predictions using the musical features supplied by the Spotify Dataset.
 
 
 ### Data Exploration
 
-The dataset we decided to use contains 228,159 tracks, and provides numerical data on the musical features of each song. Each track is defined by a tuple of (Artist Name, Track Name, Genre, Track ID) and has 10 musical features associated with it. After removing all identifying features, the dataset looks as follows:
+We got our dataset from the Spotify API, which provides musical its own generated musical features for each track. With each API call, we can collect the musical features for up to 100 songs, however since this would take some time to collect a large enough dataset, we used a preassembled dataset made using the same process. The dataset we used to train our models contains 228,159 tracks, and provides numerical data on the musical features of each song. Each track is identified by a tuple of (Artist Name, Track Name, Genre, Track ID) and has 10 musical features associated with it. After removing all identifying features, the dataset looks as follows:
 
 
 ![Data Preview](data_head.png)
@@ -31,11 +31,6 @@ We have also provided a brief explanation for each feature:
 | Valence          | Describes the musical positiveness conveyed by a track.   
 
 
-
-### Unsupervised
-
-The goal of the DBScan unsupervised learning portion was to generate playlists comprised of tracks with similar musical features. To this end, we separated the dataset into the core numerical musical features taking care to filter out identifying labels and classifications such as the track name, artist, and genre. We also removed effectively duplicate tracks based on artist and track name, which reduced the dataset size from ~280,000 to ~150,000 tracks. The resultant list of musical features consisted of acousticness, danceability, energy, instrumentalness, liveness, loudness, speechiness, tempo, and valence.
-
 After standardizing the musical feature data subset, we performed PCA to better understand the underlying data's core composition. It turned out that the explained variance was reasonably well distributed amongst the various musical features with 99% variance explanation requiring 8 of 9 principal components and only ~40% explained by the first component. We capped the number of components at 9 since there were only 9 musical features under consideration. 
 
 <p align="center"> 
@@ -47,6 +42,15 @@ Interestingly, the primary component was best described by loudness and energy, 
 <p align="center"> 
 <img src="dbscan_images/pca_feature_weights.png">
 </p>
+
+In order to get another view at what features may end up being the best predictors of popularity, we plotted each feature against popularity and looked for a positive correlation trend in the resulting plots. The features that ended up having the most highly correlated shape were Loudness and Danceability.
+
+![Correlation Plots](corr_plots.png)
+
+
+### Unsupervised
+
+The goal of the DBScan unsupervised learning portion was to generate playlists comprised of tracks with similar musical features. To this end, we separated the dataset into the core numerical musical features taking care to filter out identifying labels and classifications such as the track name, artist, and genre. We also removed effectively duplicate tracks based on artist and track name, which reduced the dataset size from ~280,000 to ~150,000 tracks. The resultant list of musical features consisted of acousticness, danceability, energy, instrumentalness, liveness, loudness, speechiness, tempo, and valence.
 
 In order to perform the DBSCAN clustering, we needed to determine relevant values for the  𝑚𝑖𝑛𝑝𝑡𝑠  and  𝜖  variables. We used the  𝑚𝑖𝑛𝑝𝑡𝑠≤𝐷+1  rule of thumb to set  𝑚𝑖𝑛𝑝𝑡𝑠  equal to 10 given that our cleaned dataset consisted of 9 features. We then subjected a random sampling of the dataset to the tried and true "elbow test" by plotting the sorted 10th nearest neighbor distances. Based on the elbow test, we elected to use an  𝜖  value of 0.75 to ensure both a sufficient number of clusters as well as a relatively evenly disbursed track count per cluster.
 
