@@ -53,7 +53,6 @@ In order to perform the DBSCAN clustering, we needed to determine relevant value
 <p align="center"> 
 <img src="dbscan_images/knn_distance.png">
 </p>
-![KNN Distance](dbscan_images/knn_distance.png)
 
 The resultant clustering consisted of 19 playlists, excluding tracks labeled as noise, comprised of ~90% of the total dataset. The average cluster size consisted of ~7,300 tracks, with each cluster representing ~5% of the total dataset.
 
