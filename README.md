@@ -55,21 +55,21 @@ The goal of the DBSCAN unsupervised learning portion was to generate playlists c
 In order to perform the DBSCAN clustering, we needed to determine relevant values for the  𝑚𝑖𝑛𝑝𝑡𝑠  and  𝜖  variables. We used the  𝑚𝑖𝑛𝑝𝑡𝑠≤𝐷+1  rule of thumb to set  𝑚𝑖𝑛𝑝𝑡𝑠  equal to 10 given that our cleaned dataset consisted of 9 features. We then leveraging the tried and true "elbow test" by plotting the sorted 10th nearest neighbor distances. Based on the elbow test, we elected to use an  𝜖  value of 0.65 to ensure both a sufficient number of clusters as well as a relatively evenly disbursed track count per cluster.
 
 <p align="center"> 
-<img src="dbscan_images/knn_distance.png">
+<img src="dbscan_images/knn_distance_v2.png">
 </p>
 
-The resultant clustering consisted of 14 playlists, excluding tracks labeled as noise, comprised of ~74% of the total dataset. The average cluster size consisted of ~8,735 tracks, but this was heavily dominated by a few outsized playlists. We further whittled down the resultant clustering to only those consisting of between 10 and 100 tracks, which generated our final 10 playlists.
+The resultant clustering consisted of 35 playlists, excluding tracks labeled as noise, comprised of ~81% of the total dataset. The average cluster size consisted of ~3,665 tracks, but this was heavily dominated by a few outlier playlists. We further whittled down the resultant clustering to only those consisting of between 10 and 100 tracks, which generated our final 16 playlists.
 
 Although our final playlists represented a fraction of the original dataset, the quality was relatively robust as evidenced by the proportion of the most prevalent genre in each playlist.
 
 <p align="center"> 
-<img src="dbscan_images/genre_distribution.png">
+<img src="dbscan_images/genre_distribution_v2.png">
 </p>
 
 Without further adieu, below please find a sample of tracks from some of our DBSCAN generated playlists. Interestingly, despite leaving out the genre and artist name from the cleaned dataset, the DBSCAN clustering grouped together tracks from similar genres and artists based solely on their musical features. With additional musical features and/or the addition of millions of user "likes", we undoubtedly would have a larger, deeper set of available playlists.
 
 <p align="center"> 
-<img src="dbscan_images/playlists_v2.PNG">
+<img src="dbscan_images/playlists_v3.PNG">
 </p>
 
 Originally, we have also attempted to solve this problem with kmeans. For the kmeans unsupervised learning, we have run the algorithm with 10 k, 100 k, 1000 k with the normalized dataset with musical attributes of acousticness, dancebility, duration_ms, energy, instrumentalness, liveness, loudness, speechiness, tempo, valence. The result is as follows: 
