@@ -2,16 +2,16 @@
 
 ### Problem Definition
 
-The global music industry was worth over $19 billion in 2018, and there has been recent interest in predicting the popularity of a song based solely on its musical features. Through our research, we found that there have been many similar studies conducted on music and machine learning in recent years. We found studies that trained CRNNs on a combination of the time-series waveform data and musical features data, as well as studies that trained SVM models on features extracted from the songs [2, 3, 5]. In this project, however, we plan to test if a neural network can make accurate predictions using the musical features supplied by the Million Song Dataset [1, 4].
+The global music industry was worth over $19 billion in 2018, and there has been recent interest in predicting the popularity of a song based solely on its musical features. Through our research, we found that there have been many similar studies conducted on music and machine learning in recent years. We found studies that trained CRNNs on a combination of the time-series waveform data and musical features data, as well as studies that trained SVM models on features extracted from the songs [2, 3, 5]. In this project, however, we plan to test if a neural network can make accurate predictions using the musical features supplied by the Spotify Dataset [1, 4].
 
 
 ### Data Exploration
 
 The dataset we decided to use contains 228,159 tracks, and provides numerical data on the musical features of each song. Each track is defined by a tuple of (Artist Name, Track Name, Genre, Track ID) and has 10 musical features associated with it. After removing all identifying features, the dataset looks as follows:
 
-<p align="center">
+
 ![Data Preview](data_head.png)
-  </p>
+
 
 We have also provided a brief explanation for each feature:
 
@@ -100,4 +100,4 @@ once again a science. In 4th International Workshop on Machine Learning and Musi
 
 
 
-Current URL: https://github.gatech.edu/pages/phoward38/cs7641_Project/
+Current URL: https://deom119.github.io/deom119.github.io-cs7641/
