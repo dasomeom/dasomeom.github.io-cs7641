@@ -69,7 +69,7 @@ Although our final playlists represented a fraction of the original dataset, the
 Without further adieu, below please find a sample of tracks from some of our DBSCAN generated playlists. Interestingly, despite leaving out the genre and artist name from the cleaned dataset, the DBSCAN clustering grouped together tracks from similar genres and artists based solely on their musical features. With additional musical features and/or the addition of millions of user "likes", we undoubtedly would have a larger, deeper set of available playlists.
 
 <p align="center"> 
-<img src="dbscan_images/playlists.PNG">
+<img src="dbscan_images/playlists_v2.PNG">
 </p>
 
 ### Supervised
