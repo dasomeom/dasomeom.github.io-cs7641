@@ -66,6 +66,80 @@ Without further adieu, below please find a sample of tracks from some of our DBS
 <img src="dbscan_images/playlists.PNG">
 </p>
 
+We have also attempted to solve this problem with kmeans. For the kmeans unsupervised learning, we have run the algorithm with 10 k, 100 k, 1000 k with the normalized dataset with musical attributes of acousticness, dancebility, duration_ms, energy, instrumentalness, liveness, loudness, speechiness, tempo, valence. The result is as follows: 
+
+k = 10
+Number of iterations: 52
+Within cluster sum of squared errors: 31040.70140648133
+
+Clustered Instances
+
+ 0       40296 ( 18%)
+ 1       22871 ( 10%)
+ 2        9575 (  4%)
+ 3       23246 ( 10%)
+ 4       13124 (  6%)
+ 5       20551 (  9%)
+ 6       35122 ( 15%)
+ 7        9887 (  4%)
+ 8       29376 ( 13%)
+ 9       24111 ( 11%)
+
+k = 100
+number of iterations: 137
+Within cluster sum of squared errors: 14277.443071772985
+
+Clustered Instances
+
+  0        3619 (  2%)
+  1        1434 (  1%)
+  2        3580 (  2%)
+  3        1931 (  1%)
+  4        2626 (  1%)
+  5        1876 (  1%)
+  6        3320 (  1%)
+  7        2004 (  1%)
+  8        3080 (  1%)
+  9        2979 (  1%)
+ 10        1964 (  1%)
+ 11        2581 (  1%)
+ 12        2239 (  1%)
+ 13        2727 (  1%)
+ 14        1107 (  0%)
+....
+
+
+
+Number of iterations: 147
+Within cluster sum of squared errors: 6744.337804311292
+
+  0         317 (  0%)
+  1         118 (  0%)
+  2         403 (  0%)
+  3         395 (  0%)
+  4         121 (  0%)
+  5         490 (  0%)
+  6         205 (  0%)
+  7         160 (  0%)
+  8         265 (  0%)
+  9         281 (  0%)
+ 10         207 (  0%)
+ 11         381 (  0%)
+ 12         120 (  0%)
+ 13         461 (  0%)
+ 14          61 (  0%)
+ 15         130 (  0%)
+ 16          91 (  0%)
+ 17         210 (  0%)
+ 18         123 (  0%)
+ 19         526 (  0%)
+ 20         394 (  0%)
+ 21         409 (  0%)
+ 22         143 (  0%)
+...
+
+For each model with different k, we have observed that the number of points in each cluster was evenly distributed. It was hard for us to find the optimal k using the elbow method, so we decided to work with DBSCAN.
+
 ### Supervised
 
 The first step was to take a look at all the features and construct a correlation matrix
