@@ -158,4 +158,4 @@ once again a science. In 4th International Workshop on Machine Learning and Musi
 [6] Yu, Yang et al. Deep attention based music genre classification. Neurocomputing, vol 372, pp. 84-91.  Jan. 2020.
 
 
-Current URL: https://deom119.github.io/deom119.github.io-cs7641/
+Current URL: https://dasomeom.github.io/dasomeom.github.io-cs7641/
